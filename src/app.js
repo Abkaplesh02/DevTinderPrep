@@ -3,37 +3,81 @@ const express=require('express');
 const app=express();
 const {adminAuth,userAuth}=require("./middlewares/auth")
 
-// Handle auth middleware for all requests :: GET , Post
 
-app.use("/admin",adminAuth);
-// app.use("/user",userAuthAuth);
+app.get("/getUserData",(req,res)=>{
 
-app.get("/admin/getAllData",(req,res)=>{
-    // Logic of checking if the request is authorised
-    // Check if the request is authenticated:: actually made by admin
-    // const token="xyz";
-    // const isAdminAuthorised=token==="xyza"
-    // if(isAdminAuthorised){
-    //     res.send("All Data sent");
-    // }
-    // else{
-    //     res.status(401).send("The admin is not authorised");
-    // }
-    res.send("All Data send")
+    try{
+ // Loigic of DB call and get user data
+ throw new Error("fdsadasf");
+ res.send("User Data Sent");
+    }
+    catch(err){
+        res.status(500).send("Something went very wrong");
+    }
+
+   
 })
 
-app.get("/user", userAuth , (req,res)=>{
-    res.send("User data sent");
+app.use("/",(err,req,res,next)=>{
+    if(err){
+        // Log your error message
+        res.status(500).send("something went wrong");
+    }
+    else {
+        res.send("Take your data");
+    }
 })
 
-app.post("/user/login",(req,res)=>{
-    res.send("User logged in successfully!!")
-})
 
-app.get("/admin/deleteUser",(req,res)=>{
 
-    res.send("Deleted a user");
-})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// // Handle auth middleware for all requests :: GET , Post
+
+// app.use("/admin",adminAuth);
+// // app.use("/user",userAuthAuth);
+
+// app.get("/admin/getAllData",(req,res)=>{
+//     // Logic of checking if the request is authorised
+//     // Check if the request is authenticated:: actually made by admin
+//     // const token="xyz";
+//     // const isAdminAuthorised=token==="xyza"
+//     // if(isAdminAuthorised){
+//     //     res.send("All Data sent");
+//     // }
+//     // else{
+//     //     res.status(401).send("The admin is not authorised");
+//     // }
+//     res.send("All Data send")
+// })
+
+// app.get("/user", userAuth , (req,res)=>{
+//     res.send("User data sent");
+// })
+
+// app.post("/user/login",(req,res)=>{
+//     res.send("User logged in successfully!!")
+// })
+
+// app.get("/admin/deleteUser",(req,res)=>{
+
+//     res.send("Deleted a user");
+// })
 
 
 

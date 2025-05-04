@@ -40,7 +40,7 @@ ______MiddleWare and error handling_________<br><br><br>
 -Difference between app.use and app.all<br>
 -Write a dummy auth middleware for admin<br>
 -Write a dummy auth middleware for all user routes , except /user/login<br>
-
+-Error handling using app.use("/",(err,req,res,next)=>{})<br><br>
 
 
 
