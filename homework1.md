@@ -13,6 +13,7 @@ ______How to create a express server____________
 -What is the use of -g while npm install 
 
 
+_______Routing________
 -initialize git
 -.gitignore 
 -create a remote repo on github.com
@@ -21,4 +22,8 @@ ______How to create a express server____________
 -Order of the routes matter a lot.
 -Install a postman and make workspace/collection and then make test API call
 -Write logic to handle GET,POST,PATCH,DELETE API calls and them on Postman
-
+-Practice ab?c , ab+c, ab*cd , a(bc)?d, a(bc)+d,
+-Explore routing and use of ?, +, (),* in the routes.
+-Use of regex in routes /a/, /.*fly$/
+-Reading the query params in the routes 
+-Reading the dynamic routes

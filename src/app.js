@@ -2,26 +2,31 @@ const express=require('express');
 
 const app=express();
 
-app.use("/user",(req,res)=>{
-    res.send("karlo api call")
+app.get("/user/:userID/:name/:password",(req,res)=>{
+    console.log(req.params)
+    res.send("Successfully executed");
 })
 
-app.get("/user",(req,res)=>{
-    res.send({firstName:"Abhishek",lastName:"Kaplesh"})
+app.get(/.*fly$/,(req,res)=>{
+    res.send("Successfully executed");
 })
 
-app.post("/user",(req,res)=>{
-    console.log("Save data to the database");
-    res.send("Data saved successfully to the database");
-})
+// app.get("/user",(req,res)=>{
+//     res.send({firstName:"Abhishek",lastName:"Kaplesh"})
+// })
 
-app.delete("/user",(req,res)=>{
-    res.send("Deleted successfully")
-})
+// app.post("/user",(req,res)=>{
+//     console.log("Save data to the database");
+//     res.send("Data saved successfully to the database");
+// })
 
-app.use("/test",(req,res)=>{
-    res.send("Hello from the test server");
-})
+// app.delete("/user",(req,res)=>{
+//     res.send("Deleted successfully")
+// })
+
+// app.use("/test",(req,res)=>{
+//     res.send("Hello from the test server");
+// })
 // This will match all HTTP method api call to /test
 
 // app.use("/hello",(req,res)=>{
