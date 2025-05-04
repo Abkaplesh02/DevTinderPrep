@@ -17,4 +17,8 @@ ______How to create a express server____________
 -.gitignore 
 -create a remote repo on github.com
 -push all code to remote origin
+-Play with routes and route extensions. ex /hello , /test etc;
+-Order of the routes matter a lot.
+-Install a postman and make workspace/collection and then make test API call
+-Write logic to handle GET,POST,PATCH,DELETE API calls and them on Postman
 

@@ -2,17 +2,35 @@ const express=require('express');
 
 const app=express();
 
+app.use("/user",(req,res)=>{
+    res.send("karlo api call")
+})
+
+app.get("/user",(req,res)=>{
+    res.send({firstName:"Abhishek",lastName:"Kaplesh"})
+})
+
+app.post("/user",(req,res)=>{
+    console.log("Save data to the database");
+    res.send("Data saved successfully to the database");
+})
+
+app.delete("/user",(req,res)=>{
+    res.send("Deleted successfully")
+})
+
 app.use("/test",(req,res)=>{
     res.send("Hello from the test server");
 })
+// This will match all HTTP method api call to /test
 
-app.use("/hello",(req,res)=>{
-    res.send("Hello from the hello server");
-})
+// app.use("/hello",(req,res)=>{
+//     res.send("Hello from the hello server");
+// })
 
-app.use("/",(req,res)=>{
-    res.send("Hello from the server");
-})
+// app.use("/",(req,res)=>{
+//     res.send("Hello from the  Abhishek Kaplesh server");
+// })
 
 
 app.listen(7777,()=>{
