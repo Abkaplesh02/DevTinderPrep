@@ -40,11 +40,21 @@ ______MiddleWare and error handling_________<br><br><br>
 -Difference between app.use and app.all<br>
 -Write a dummy auth middleware for admin<br>
 -Write a dummy auth middleware for all user routes , except /user/login<br>
--Error handling using app.use("/",(err,req,res,next)=>{})<br><br>
+-Error handling using app.use("/",(err,req,res,next)=>{})<br><br>3
 
-
-
-
-
+_______ Database, Schema & Models ______<br><br><br>
+-Create a free cluster on MongoDB official website(MongoDB atlas)<br>
+-Install mongoose library<br>
+-Connect your application to the database "connection-url"/devTinder.<br>
+-Call the connectDB function and connect to the database before starting application on port NO:xyza<br>
+-Create a userSchema and userModel<br>
+-Create post /signup APi to add data to database<br>
+-Push some documents using API calls from postman<br>
+-Error handling using try and catch<br>
 
 Ques1=>What happen if we send request and dont send any response in it?
+
+
+<!-- Dev Tinder is the database -->
+<!-- user is the collection -->
+<!-- The data added is 1 document inside a collection with different field inside-->

@@ -1,32 +1,76 @@
 const express=require('express');
 
+const connectDB=require("./config/database");
 const app=express();
-const {adminAuth,userAuth}=require("./middlewares/auth")
+const User=require("./models/user")
 
+app.post("/signup",async (req,res)=>{
+    const userObj={
+        firstName:"Sachin",
+        lastName:"Paglu",
+        email:"SachinKohli@gmail.com",
+        password:"Abkaplesh02",
+        age:"44",
+        gender:"Male"
+    }
 
-app.get("/getUserData",(req,res)=>{
-
+    const user=new User(userObj);
+    // Creating a new instance of the user model
     try{
- // Loigic of DB call and get user data
- throw new Error("fdsadasf");
- res.send("User Data Sent");
+        await user.save();
+    res.send("User Added successfully");
     }
     catch(err){
-        res.status(500).send("Something went very wrong");
+        res.status(400).send("Error saving the user"+ err.message);
     }
+})
+
+connectDB().then(()=>{
+    console.log("DataBase connection established")
+    app.listen(7777,()=>{
+        console.log("Server started")
+    });
+}).catch((err)=>{
+    console.error("Database cannot be connected")
+})
+
+
+
+
+
+
+
+
+
+
+
+
+// const {adminAuth,userAuth}=require("./middlewares/auth")
+
+
+// app.get("/getUserData",(req,res)=>{
+
+//     try{
+//  // Loigic of DB call and get user data
+//  throw new Error("fdsadasf");
+//  res.send("User Data Sent");
+//     }
+//     catch(err){
+//         res.status(500).send("Something went very wrong");
+//     }
 
    
-})
+// })
 
-app.use("/",(err,req,res,next)=>{
-    if(err){
-        // Log your error message
-        res.status(500).send("something went wrong");
-    }
-    else {
-        res.send("Take your data");
-    }
-})
+// app.use("/",(err,req,res,next)=>{
+//     if(err){
+//         // Log your error message
+//         res.status(500).send("something went wrong");
+//     }
+//     else {
+//         res.send("Take your data");
+//     }
+// })
 
 
 
@@ -292,6 +336,3 @@ app.use("/",(err,req,res,next)=>{
 // })
 
 
-app.listen(7777,()=>{
-    console.log("Server started")
-});
