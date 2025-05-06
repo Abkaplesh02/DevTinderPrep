@@ -57,6 +57,19 @@ _______ Database, Schema & Models ______<br><br><br>
 -What is difference between JSon and JavaScript object<br>
 -Add the express.json middleware to your app<br>
 -Make your signup APi dynamic to recieve data from the end user<br>
+-APi-Get user by password
+-API-get all users from the database
+-Api-get users by id
+-User.findOne with duplicate password, which object returned<br>
+-Create a delete user APi<br>
+-Difference between put and patch<br>
+-Api-Update a user<br>
+-Explore the mongoose documentation for models methods<br>
+-what are options in model.findOneAndUpdate method , explore more about it<br>
+-Api-Update the user with email Id
+
+
+
 
 Ques1=>What happen if we send request and dont send any response in it?
 

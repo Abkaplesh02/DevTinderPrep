@@ -32,6 +32,80 @@ app.post("/signup",async (req,res)=>{
     }
 })
 
+// Feed api :: get/feed - get all the users from the database
+app.get("/user",async(req,res)=>{
+    const userPassword=req.body.password;
+try{
+
+   const user=await User.find({password:userPassword})
+   if(user.length===0){
+    res.status(404).send("User not found");
+   }
+   else{
+
+       res.send(user);
+    }
+}
+catch(err){
+    res.status(400).send("something went wrong");
+}
+})
+// Get user by email
+app.get("/Feed",async(req,res)=>{
+
+    try{
+        const user=await User.find({});
+        res.send(user);
+    }
+    catch(err){
+        res.status(400).send("Nothing running")
+    }
+
+})
+
+app.get("/find",async(req,res)=>{
+    const userPassword=req.body.password;
+    
+        const user=await User.findOne({password:userPassword});
+        if(!user){
+            res.status(400).send("Ntohingn found")
+        }
+        else{
+
+            res.send(user);
+        }
+})
+
+// Delete the user from database
+app.delete("/user",async(req,res)=>{
+    const userId=req.body.userId;
+    try{
+        // const user=await User.findByIdAndDelete(userId)
+        const user=await User.findByIdAndDelete({_id:userId})
+        res.send("user deleted");
+    }
+    catch(err){
+        res.status(400).send("Nothing running")
+    }
+
+})
+
+// Update the data
+app.patch("/user",async(req,res)=>{
+    const userId=req.body.userId;
+    const data=req.body;
+    try{
+        const user=await User.findByIdAndUpdate({_id:userId},data,{returnDocument:'after'});
+        console.log(user)
+        res.send("Data sent successfully")
+    }
+    catch(err){
+        res.status(400).send("Nothing running")
+    }
+    
+
+})
+
 connectDB().then(()=>{
     console.log("DataBase connection established")
     app.listen(7777,()=>{
