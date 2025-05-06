@@ -52,6 +52,12 @@ _______ Database, Schema & Models ______<br><br><br>
 -Push some documents using API calls from postman<br>
 -Error handling using try and catch<br>
 
+
+<br> __Diving into the APIS <br><br><br>
+-What is difference between JSon and JavaScript object<br>
+-Add the express.json middleware to your app<br>
+-Make your signup APi dynamic to recieve data from the end user<br>
+
 Ques1=>What happen if we send request and dont send any response in it?
 
 

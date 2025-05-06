@@ -4,17 +4,24 @@ const connectDB=require("./config/database");
 const app=express();
 const User=require("./models/user")
 
-app.post("/signup",async (req,res)=>{
-    const userObj={
-        firstName:"Sachin",
-        lastName:"Paglu",
-        email:"SachinKohli@gmail.com",
-        password:"Abkaplesh02",
-        age:"44",
-        gender:"Male"
-    }
+app.use(express.json());
 
-    const user=new User(userObj);
+app.post("/signup",async (req,res)=>{
+
+    console.log(req.body)
+
+    // Here we are creating instance of User model and we are passing data in to it and di await save3 \
+    // and new data was added to collection 
+    // const userObj={
+    //     firstName:"Virat ",
+    //     lastName:"Sharma",
+    //     email:"ViratKohli@gmail.com",
+    //     password:"Abkaplesh02",
+    //     age:"444",
+    //     gender:"Male"
+    // }
+
+    const user=new User(req.body);
     // Creating a new instance of the user model
     try{
         await user.save();
