@@ -53,7 +53,7 @@ _______ Database, Schema & Models ______<br><br><br>
 -Error handling using try and catch<br>
 
 
-<br> __Diving into the APIS <br><br><br>
+<br> _____Diving into the APIS________ <br><br><br>
 -What is difference between JSon and JavaScript object<br>
 -Add the express.json middleware to your app<br>
 -Make your signup APi dynamic to recieve data from the end user<br>
@@ -66,7 +66,9 @@ _______ Database, Schema & Models ______<br><br><br>
 -Api-Update a user<br>
 -Explore the mongoose documentation for models methods<br>
 -what are options in model.findOneAndUpdate method , explore more about it<br>
--Api-Update the user with email Id
+-Api-Update the user with email Id<br>
+-Install validator<br>
+-Explore validator function and library and use validator func for password , email and urls <br>
 
 
 <br><br>__Data Sanitization and schema validation____<br><br>

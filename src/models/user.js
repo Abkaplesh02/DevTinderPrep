@@ -1,5 +1,5 @@
 const mongoose=require('mongoose');
-
+const validator=require("validator")
 const userSchema=new mongoose.Schema({
     firstName:{
         type:String,
@@ -16,6 +16,11 @@ const userSchema=new mongoose.Schema({
         unique:true,
         lowercase:true,
         trim:true,
+        validate(value){
+            if(!validator.isEmail(value)){
+                throw new Error("Invalid email address", value);
+            }
+        }
     },
     password:{
         type:String,
@@ -37,6 +42,12 @@ const userSchema=new mongoose.Schema({
     photoUrl:{
         type:String,
         default:"https://static.everypixel.com/ep-pixabay/0329/8099/0858/84037/3298099085884037069-head.png"
+        ,
+        validate(value){
+            if(!validator.isURL(value)){
+                throw new Error("Invalid photo url", value);
+            }
+        }
     },
     about:{
         type:String,
