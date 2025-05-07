@@ -8,7 +8,7 @@ app.use(express.json());
 
 app.post("/signup",async (req,res)=>{
 
-    console.log(req.body)
+    
 
     // Here we are creating instance of User model and we are passing data in to it and di await save3 \
     // and new data was added to collection 
@@ -91,11 +91,25 @@ app.delete("/user",async(req,res)=>{
 })
 
 // Update the data
-app.patch("/user",async(req,res)=>{
-    const userId=req.body.userId;
+app.patch("/user/:userID",async(req,res)=>{
+    const userId=req.params.userID;
     const data=req.body;
-    try{
-        const user=await User.findByIdAndUpdate({_id:userId},data,{returnDocument:'after'});
+    const ALLOWED_UPDATES=[
+        "photoUrl","about","gender","age","skills"
+    ]
+
+    try{ 
+    const isUpdateAllowed=Object.keys(data).every(k=>ALLOWED_UPDATES.includes(k))
+
+    if(!isUpdateAllowed){
+        throw new Error("Update nto allowed");
+    }
+
+    if(data?.skills.length>10){
+        throw new Error("Skills cannot be more than 10")
+    }
+    
+        const user=await User.findByIdAndUpdate({_id:userId},data,{returnDocument:'after',runValidators:true},);
         console.log(user)
         res.send("Data sent successfully")
     }

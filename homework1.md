@@ -69,6 +69,16 @@ _______ Database, Schema & Models ______<br><br><br>
 -Api-Update the user with email Id
 
 
+<br><br>__Data Sanitization and schema validation____<br><br>
+-Explore schemaType options from documentations<br>
+-add required,unique,lowercase,min,minlength,trim<br>
+-Add default<br>
+-Create a custom validate function for gender<br>
+-Improve the DB schema - PUT all appropiate validation on each field in schema<br>
+-Add timestamp to the userSchema<br>
+-Add api level validation on Patch request and signup post api.
+-Data Sanitizing::Add api validation for each field
+
 
 
 Ques1=>What happen if we send request and dont send any response in it?
