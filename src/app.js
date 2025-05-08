@@ -3,32 +3,56 @@ const express=require('express');
 const connectDB=require("./config/database");
 const app=express();
 const User=require("./models/user")
-
+const {validateSignUpData}=require("./utils/validation")
 app.use(express.json());
+const bcrypt=require('bcrypt');
 
 app.post("/signup",async (req,res)=>{
 
-    
-
-    // Here we are creating instance of User model and we are passing data in to it and di await save3 \
-    // and new data was added to collection 
-    // const userObj={
-    //     firstName:"Virat ",
-    //     lastName:"Sharma",
-    //     email:"ViratKohli@gmail.com",
-    //     password:"Abkaplesh02",
-    //     age:"444",
-    //     gender:"Male"
-    // }
-
-    const user=new User(req.body);
-    // Creating a new instance of the user model
     try{
+
+    //Validation of data
+    validateSignUpData(req);
+
+    const {firstName,lastName,emailId,password}=req.body;
+    // Encrypt the password
+    const passwordHash=await bcrypt.hash(password,10);
+    // Creating a new instance of the user model
+    const user=new User({
+        firstName,
+        lastName,
+        emailId,
+        password:passwordHash,
+    });
+    // Creating a new instance of the user model
+
         await user.save();
     res.send("User Added successfully");
     }
     catch(err){
         res.status(400).send("Error saving the user"+ err.message);
+    }
+})
+
+app.post("/Login",async(req,res)=>{
+    try{
+        const {emailId,password}=req.body;
+        // Write a check for email and password validation here
+        const user=await User.findOne({emailId:emailId});
+        if(!user){
+            throw new Error("Email Id is not present in DB");
+        }
+        const isPasswordValid=bcrypt.compare(password,user.password);
+
+        if(isPasswordValid){
+            res.send("Login successfull!!");
+        }
+        else{
+            throw new Error("Password is not correct ");
+        }
+    }
+    catch(err){
+        res.status(400).send("Not found :",err.message);
     }
 })
 

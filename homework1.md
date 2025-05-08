@@ -80,6 +80,15 @@ _______ Database, Schema & Models ______<br><br><br>
 -Add timestamp to the userSchema<br>
 -Add api level validation on Patch request and signup post api.
 -Data Sanitizing::Add api validation for each field
+-Never trust req.body <br>
+
+<br><br>___Encrypting password___<br><br>
+-Validate data in signup API<br>
+-Install bcrypt package<br>
+-Create passwordHash using bcrypt.hash and save the user with encrypted password<br>
+-Create login APi <br>
+-Compare passwords and throw error if email or password is invalid<br>
+
 
 
 
