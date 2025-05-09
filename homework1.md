@@ -97,10 +97,9 @@ _______ Database, Schema & Models ______<br><br><br>
 -install JSONwebtoken<br>
 -In login API , after email and password validation, create a Jwt token and send it to user in cookie<br>
 -read the cookie inside your profile API and find the logged in user<br>
-
-
-
-
+-userAuth Middleware<br>
+-Add the userAuth middleware in profile APi and new sendConnectionrequest API<br>
+-Set the expiry of JWT token and cookies to 7 days<br>
 
 Ques1=>What happen if we send request and dont send any response in it?
 

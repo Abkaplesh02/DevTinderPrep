@@ -9,6 +9,7 @@ const bcrypt=require('bcrypt');
 const cookieParser = require('cookie-parser');
 app.use(cookieParser());
 const jwt=require("jsonwebtoken");
+const {userAuth}=require("./middlewares/auth")
 
 app.post("/signup",async (req,res)=>{
 
@@ -51,12 +52,12 @@ app.post("/Login",async(req,res)=>{
 
             // Create a JWT Token
 
-            const token=await jwt.sign({_id:user._id},"DEV@Tinder$798");
+            const token=await jwt.sign({_id:user._id},"DEV@Tinder$798",{expiresIn:'1d'});
             console.log(token);
 
             // Add the token to cookie and send the response back to server
 
-            res.cookie("token",token);
+            res.cookie("token",token,{expires:new Date(Date.now()+9000)});
             res.send("Login successfull!!");
         }
         else{
@@ -68,25 +69,28 @@ app.post("/Login",async(req,res)=>{
     }
 })
 
-app.get("/profile",async(req,res)=>{
+app.get("/profile", userAuth , async(req,res)=>{
    try{
-    const cookies=req.cookies;
+    // const cookies=req.cookies;
     
-    const {token}=cookies;
-    if(!token){
-        throw new Error("Invalid token");
-    }
+    // const {token}=cookies;
+    // if(!token){
+    //     throw new Error("Invalid token");
+    // }
 
     // validate my token
 
-    const decodedMessage=await jwt.verify(token,"DEV@Tinder$798");
-    const{_id}=decodedMessage;
-    console.log("The logged in user is ::" + _id);
+    // const decodedMessage=await jwt.verify(token,"DEV@Tinder$798");
+    // const{_id}=decodedMessage;
+    // console.log("The logged in user is ::" + _id);
 
-    const user= await User.findById(_id);
-    if(!user){
-        throw new Error("User not found / Invalid request");
-    }
+    // const user= await User.findById(_id);
+    // if(!user){
+    //     throw new Error("User not found / Invalid request");
+    // }
+
+
+    const user=req.user;
 
     res.send(user)
    }
@@ -94,6 +98,15 @@ app.get("/profile",async(req,res)=>{
     res.status(400).send(err.message);
    }
 })
+
+app.post("/sendConnectionRequest", userAuth,async(req,res)=>{
+
+    const user=req.user;
+    // Sending connection request
+    
+    res.send(user.firstName  + " is sending Connection ")
+})
+
 
 // Feed api :: get/feed - get all the users from the database
 app.get("/user",async(req,res)=>{
