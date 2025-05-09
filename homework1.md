@@ -90,6 +90,16 @@ _______ Database, Schema & Models ______<br><br><br>
 -Compare passwords and throw error if email or password is invalid<br>
 
 
+<br><br>______Authentication,Jwt and  cookies_____<br><br>
+-install cookie-parser<br>
+-just send a dummy cookie to user<br>
+-create GET/profile API and check if you get the cookie back<br>
+-install JSONwebtoken<br>
+-In login API , after email and password validation, create a Jwt token and send it to user in cookie<br>
+-read the cookie inside your profile API and find the logged in user<br>
+
+
+
 
 
 Ques1=>What happen if we send request and dont send any response in it?
