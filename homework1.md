@@ -119,7 +119,18 @@ _______ Database, Schema & Models ______<br><br><br>
 -make you validate all data in every post , patch apis<br>
 
 
-
+<br><br>_____ Logical DB Query & Compound Indexes_______<br><b>
+-Create a connection request Schema<br>
+-Send connection request API<br>
+-Proper validation of data<br>
+-Think about all corner cases and handle them<br>
+-$or query and $and query in monogoDB (logical queries)<br>
+-schema.pre("save) function<br>
+-Read more about indexes in MongoDB<br>
+-Why do we need index in DB?<br>
+-Advantages and disadvantage of indexes<br>
+-Read the artice about compound indexes<br>
+-Why we should not make too many indexes.<br>
 
 
 
