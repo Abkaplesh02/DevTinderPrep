@@ -100,8 +100,31 @@ _______ Database, Schema & Models ______<br><br><br>
 -userAuth Middleware<br>
 -Add the userAuth middleware in profile APi and new sendConnectionrequest API<br>
 -Set the expiry of JWT token and cookies to 7 days<br>
+-Create userSchema method to getJWT()<br>
+-Create userSchema mehtod to comparepassword(passwordInputByUser)<br>
 
-Ques1=>What happen if we send request and dont send any response in it?
+
+
+<br><br>_____ Diving into the APIs and express Router_____<br><br>
+-Explore tinder APIs<br>
+-Create a list of all API you can think in Dev Tinder<br>
+-Group multiples routes under respective routers<br>
+-Explore read documentations of express.Router<br>
+-Create routes folder for managing auth , profile, request routers<br>
+-Create authRouter,profileRouter,requestRouter<br>
+-Import these router in app.js<br>
+-Create post /logout API <br>
+-create Patch /profile/edit API<br>
+-create Patch /profile/password API=>forgot password api<br>
+-make you validate all data in every post , patch apis<br>
+
+
+
+
+
+
+
+Ques1=>What happen if we send request and dont send any response in it
 
 
 <!-- Dev Tinder is the database -->
