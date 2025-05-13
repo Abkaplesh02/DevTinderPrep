@@ -135,9 +135,18 @@ _______ Database, Schema & Models ______<br><br><br>
 
 
 
+<br><br>_____ref, Populate & Thought process of writing APIs______<br><br>
+-write code with proper validation for /request/review/:status/:requestId<br>
+-Read about ref and populate
+-Create /GET request for user/request/recieced/pending with all checks.
+
+
 Ques1=>What happen if we send request and dont send any response in it
 
 
 <!-- Dev Tinder is the database -->
 <!-- user is the collection -->
 <!-- The data added is 1 document inside a collection with different field inside-->
+
+-Thought process -POST vs GET
+
