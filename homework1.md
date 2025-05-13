@@ -139,6 +139,12 @@ _______ Database, Schema & Models ______<br><br><br>
 -write code with proper validation for /request/review/:status/:requestId<br>
 -Read about ref and populate
 -Create /GET request for user/request/recieced/pending with all checks.
+-Create /GET request for user/connections
+
+<br><br>_____Building Feed API & Pagination___<br><br>
+-logic for GET /feed API<br>
+-explore the $nin, $and , $ne and other queries<br>
+
 
 
 Ques1=>What happen if we send request and dont send any response in it
