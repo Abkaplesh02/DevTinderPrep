@@ -5,7 +5,6 @@ const jwt=require("jsonwebtoken");
 const userSchema=new mongoose.Schema({
     firstName:{
         type:String,
-        required:true,
         minLength:4,
         index:true,
         maxLength:50,
@@ -15,7 +14,6 @@ const userSchema=new mongoose.Schema({
     },
     emailId:{
         type:String,
-        required:true,
         unique:true,
         lowercase:true,
         trim:true,
@@ -50,11 +48,11 @@ const userSchema=new mongoose.Schema({
         type:String,
         default:"https://static.everypixel.com/ep-pixabay/0329/8099/0858/84037/3298099085884037069-head.png"
         ,
-        validate(value){
-            if(!validator.isURL(value)){
-                throw new Error("Invalid photo url", value);
-            }
-        }
+        // validate(value){
+        //     if(!validator.isURL(value)){
+        //         throw new Error("Invalid photo url", value);
+        //     }
+        // }
     },
     about:{
         type:String,

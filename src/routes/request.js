@@ -98,12 +98,9 @@ requestRouter.post("/request/review/:status/:requestId", userAuth,async(req,res)
         // status==interesed
         // 
 
-
-
-
     }
     catch(err){
-        res.status(400).send("Error" + err.message)
+        res.status(400).send(err.message)
     }
 })
 

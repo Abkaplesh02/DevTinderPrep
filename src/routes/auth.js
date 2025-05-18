@@ -33,8 +33,13 @@ authRouter.post("/signup",async (req,res)=>{
     });
     // Creating a new instance of the user model
 
-        await user.save();
-    res.send("User Added successfully");
+     await user.save();
+    const token=await user.getJWT();
+
+            // Add the token to cookie and send the response back to server
+
+          res.cookie("token",token,{expires:new Date(Date.now()+900000)});
+            res.send(user);
     }
     catch(err){
         res.status(400).send("Error saving the user"+ err.message);
@@ -61,7 +66,7 @@ authRouter.post("/Login",async(req,res)=>{
             // Add the token to cookie and send the response back to server
 
             res.cookie("token",token,{expires:new Date(Date.now()+900000)});
-            res.send("Login successfull!!");
+            res.send(user);
         }
         else{
             throw new Error("Password is not correct ");

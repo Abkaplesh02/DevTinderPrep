@@ -1,7 +1,7 @@
 const validator=require("validator");
 const validateSignUpData=(req)=>{
 
-    const{firstName,lastName,emailId,password}=req.body;
+    const{firstName,lastName,emailId,password,age,gender}=req.body;
 
     if(! firstName || !lastName){
         throw new Error("Name is not valid")
@@ -15,6 +15,12 @@ const validateSignUpData=(req)=>{
     else if(!validator.isStrongPassword(password)){
         throw new Error("Please enter strong password");
     }
+    // else if(!age){
+    //     throw new Error("Enter age");
+    // }
+    // else if(!gender){
+    //     throw new Error("Enter gender corrrectly");
+    // }
 
 }
 
